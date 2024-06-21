@@ -10,14 +10,13 @@ import fs from 'fs';
     const uploadOnCloudinry = async (localfilepath)=>{
         try {
             if(!localfilepath) return null
-
             //upload the file on cloudinaty
-
             const responces = await cloudinary.uploader.upload(localfilepath, {
                 resource_type: "auto"
             })
             // file has beenn uploaded successfull
-            console.log("File is uploaded on cloudniary" , responces.url);
+            // console.log("File is uploaded on cloudniary" , responces.url);
+            fs.unlinkSync(localfilepath)
             return responces;
 
         } catch (error) {
